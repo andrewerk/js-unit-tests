@@ -14,9 +14,19 @@
 
 const average = (arr) => {
   let sum = 0;
-  for(let n = 0; n < arr.length; n += 1) {
-    sum += arr[n];}
-    let avg = sum/arr.length
-    return avg
+  let avg = 0;
+  if (arr.length !== 0) {  
+  for (let n = 0; n < arr.length; n += 1) {
+    sum += arr[n];
+    if (typeof arr[n] !== 'number') {
+      return undefined;
+    }
+    }
+  
+    avg = Math.round(sum / arr.length);
+    return avg;
+ } 
+    return undefined;
+  };
 
 module.exports = average;
