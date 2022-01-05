@@ -15,7 +15,7 @@
   Parâmetros:
   - Um objeto. Exemplos: { food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} }.
   Comportamento:
-
+3
   const meuRestaurante = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} }).
 
   meuRestaurante.fetchMenu() // Retorno: { food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} }
@@ -79,6 +79,13 @@
 // que percorre por todos os itens de `objetoRetornado.consumption`, soma o preço deles e retorna o valor somado acrescido de 10%.
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+const createMenu = (menuObject) => {
+  const mainObject = {
+  fetchMenu: () => menuObject,
+  consumption: [],
+  order: (item) => mainObject.consumption.push(item),
+  };
+  return mainObject;
+};
 
 module.exports = createMenu;
