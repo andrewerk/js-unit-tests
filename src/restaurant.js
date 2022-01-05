@@ -84,8 +84,23 @@ const createMenu = (menuObject) => {
   fetchMenu: () => menuObject,
   consumption: [],
   order: (item) => mainObject.consumption.push(item),
+  pay: () => {
+    let amount = 0;
+    let items = mainObject.consumption;
+    for (let i = 0; i < items.length; i += 1) {
+      if (mainObject.fetchMenu().food[items[i]]) {
+        amount += mainObject.fetchMenu().food[items[i]];
+      } 
+      if (mainObject.fetchMenu().drink[items[i]]) {
+        amount += mainObject.fetchMenu().drink[items[i]];
+      }      
+    }
+    return Math.round(((amount * 1.1) + Number.EPSILON) * 100) / 100;
+    // Desse post no StackOverflow retirei a referência do EPSILON :
+    // https://stackoverflow.com/questions/11832914/how-to-round-to-at-most-2-decimal-places-if-necessary
+  },
   };
   return mainObject;
 };
-
+  
 module.exports = createMenu;
