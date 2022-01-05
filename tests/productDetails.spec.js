@@ -42,6 +42,13 @@ describe('6 - Implemente os casos de teste para a função `productDetails`', ()
     // Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.
     expect(productDetails('param1','param2')[0]).not.toEqual(productDetails('param1','param2')[1]);
     // Teste se os dois productIds terminam com 123.
-
+    let productIdOne = productDetails('param1','param2')[0].details.productId;
+    let productIdTwo = productDetails('param1','param2')[1].details.productId;
+    expect(productIdOne[productIdOne.length-1]).toBe('3');
+    expect(productIdOne[productIdOne.length-2]).toBe('2');
+    expect(productIdOne[productIdOne.length-3]).toBe('1');
+    expect(productIdTwo[productIdTwo.length-1]).toBe('3');
+    expect(productIdTwo[productIdTwo.length-2]).toBe('2');
+    expect(productIdTwo[productIdTwo.length-3]).toBe('1');
   });
 });
